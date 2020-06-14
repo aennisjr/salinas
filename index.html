@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta charset="UTF-8" />
+	
+	<!-- Mobile Specific Metas -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	
+	<!-- Favicons -->
+	<link rel="apple-touch-icon" sizes="180x180" href="src/images/favicon/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="src/images/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="src/images/favicon/favicon-16x16.png">
+	<link rel="manifest" href="src/images/favicon/site.webmanifest">
+	<link rel="mask-icon" href="src/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
+	<link rel="shortcut icon" href="src/images/favicon/favicon.ico">
+	<meta name="msapplication-TileColor" content="#da532c">
+	<meta name="msapplication-config" content="src/images/favicon/browserconfig.xml">
+	<meta name="theme-color" content="#ffffff">
+
+	<!-- FontAwesome -->
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+
+	<link rel="stylesheet" type="text/css" href="src/css/argon-design-system.min.css">
+	<link rel="stylesheet" type="text/css" href="src/css/style.css">
+
+	<title>Salinas</title>
+</head>
+<body class="gradient-1" id="body">
+
+	<div class="container">
+		<div class="content">
+			<div class="flex-row">
+				<div class="flex-1">
+					<div class="current-display section-padding">
+						<div class="current-temp" id="current-temp">...</div>
+						<div class="meta"> 
+							The Current Weather in <br>
+							<span class="em"><span id="current-location-text"></span></span>
+							<div id="weather-icon"></div>
+							<div id="current-weather-description"></div>
+						</div>
+						<div class="full">
+							<div class="tb">Feels Like <div class="val" id="feels">Loading...</div></div>
+							<div class="tb">Pressure <div class="val" id="pressure">Loading...</div></div>
+							<div class="tb">Humidity <div class="val" id="humidity">Loading...</div></div>
+							<div class="tb">Low + High <div class="val" id="minMax">Loading...</div></div>
+							<div class="tb">Wind Speed <div class="val" id="wind">Loading...</div></div>
+						</div>
+						<div class="flex-row flex-row-mobile">
+							<div class="flex-1">
+								<button id="current-w-refresh-button" class="current-w-refresh-button">
+									<i class="fas fa-sync-alt"></i>
+								</button>
+							</div>
+							<div class="flex-1">
+								<button class="current-w-setlocation-button" data-toggle="modal" data-target="#setLocationModal">
+									<i class="fas fa-map-marker-alt"></i>
+								</button>
+							</div>
+						</div>
+						<div class="text-center">
+							<small class="text-muted" id="timeNow"></small>
+						</div>
+					</div>
+				</div>
+				<div class="flex-3">
+					<div class="section-padding">
+
+						<div class="search-container flex-row flex-row-mobile" id="searchContainer">
+							<div class="input-group input-group-alternative">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="fas fa-search"></i></span>
+								</div>
+								
+								<form id="searchEngineForm"></form>
+
+							</div>
+							<div class="flex-row flex-row-mobile align-items-center">
+								<div>
+									<div id="searchIconContainer"></div>
+								</div>
+								<div class="dropdown">
+									<a class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									</a>
+									<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+										<a class="dropdown-item" href="#" id="searchOption" data-engine="google">Google</a>
+										<a class="dropdown-item" href="#" id="searchOption" data-engine="bing">Bing</a>
+										<a class="dropdown-item" href="#" id="searchOption" data-engine="duckduckgo">Duck Duck Go</a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="nav-wrapper">
+							<ul class="nav nav-pills nav-fill flex-column flex-md-row" id="tabs-icons-text" role="tablist">
+								<li class="nav-item">
+									<a class="nav-link mb-sm-3 mb-md-0 active" id="tabs-icons-text-1-tab" data-toggle="tab" href="#tabs-icons-text-1" role="tab" aria-controls="tabs-icons-text-1" aria-selected="true">
+										<i class="far fa-newspaper"></i>&nbsp;&nbsp;Today's News (US)
+									</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-2-tab" data-toggle="tab" href="#tabs-icons-text-2" role="tab" aria-controls="tabs-icons-text-2" aria-selected="false">
+										<i class="far fa-chart-bar"></i>&nbsp;&nbsp;Market
+									</a>
+								</li>
+							</ul>
+						</div>
+						<div class="card shadow">
+							<div class="card-body">
+								<div class="tab-content" id="myTabContent">
+									<div class="tab-pane fade show active" id="tabs-icons-text-1" role="tabpanel" aria-labelledby="tabs-icons-text-1-tab">
+
+										<div id="news-items-container"></div>
+
+									</div>
+									<div class="tab-pane fade" id="tabs-icons-text-2" role="tabpanel" aria-labelledby="tabs-icons-text-2-tab">
+										
+										<div id="stockMarketData"></div>
+										<div class="flex-row flex-table-head">
+											<div class="flex-1">Symbol</div>
+											<div class="flex-1">Name</div>
+											<div class="flex-1">Last Price</div>
+											<div class="flex-1">Change</div>
+											<div class="flex-1">% Change</div>
+											<div class="flex-1">Volume</div>
+										</div>
+										
+										<div id="stockMarketDataSymbols"></div>
+
+									</div>
+								</div>
+							</div>
+						</div>					
+					</div>
+				</div>
+			</div>
+
+
+
+		</div><!-- container -->
+	</div><!-- content -->
+
+	<div class="modal fade" id="setLocationModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-sm modal-dialog-centered">
+			<div class="modal-content">
+				<p>
+					<h5>Select Location</h5>
+				</p>
+				<form id="setLocationForm">
+					<div class="form-group">
+						<div class="input-group input-group-alternative mb-4">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fas fa-search"></i></span>
+							</div>
+							<input class="form-control" placeholder="New York" type="text" id="cityInput">
+						</div>
+					</div>
+					<div class="flex-row align-items-center">
+						<div>
+							<button class="btn btn-default" type="submit">Submit</button>
+						</div>
+						<div>
+							<div id="setLocationResponse"></div>
+						</div>
+					</div>
+				</form>
+
+				<div class="tip">
+					You can use a city name followed by the ISO 3166 country code to distinguish between
+					cities with similar names. For example, <b>London,UK</b> vs <b>London,CA</b>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="alertModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-sm modal-dialog-centered">
+			<div class="modal-content">
+				<div class="alert-message" id="alert-message"></div>
+			</div>
+		</div>
+	</div>
+
+	<a id="searchAnchor"></a>
+	<!-- jQuery -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+	<!-- Bootstrap -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+	<!-- Chart JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+
+	<script type="text/javascript" src="/src/js/salinas.js">
+		
+	</script>
+
+</body>
+</html>
