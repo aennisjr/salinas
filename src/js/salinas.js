@@ -90,12 +90,12 @@ window.onload = () => {
 
 		    		output += 
 		    			'<div class="flex-row flex-table-row">' +					
-							'<div class="bold flex-1">'+ res.results[i].symbol +'</div>' +
-							'<div class="flex-1">'+ res.results[i].name +'</div>' +
-							'<div class="flex-1">'+ lastPrice +'</div>' +
-							'<div class="flex-1">'+ netChange +'</div>' +
-							'<div class="flex-1">'+ percentChange +'</div>' +
-							'<div class="flex-1">'+ res.results[i].volume +'</div>' +
+							'<div class="bold flex-1"><span class="badge badge-light on-md-sm">Symbol</span> '+ res.results[i].symbol +'</div>' +
+							'<div class="flex-1"><span class="badge badge-light on-md-sm">Name</span> '+ res.results[i].name +'</div>' +
+							'<div class="flex-1"><span class="badge badge-light on-md-sm">Last Price</span> '+ lastPrice +'</div>' +
+							'<div class="flex-1"><span class="badge badge-light on-md-sm">Net Change</span> '+ netChange +'</div>' +
+							'<div class="flex-1"><span class="badge badge-light on-md-sm">% Change</span> '+ percentChange +'</div>' +
+							'<div class="flex-1"><span class="badge badge-light on-md-sm">Volume</span> '+ res.results[i].volume +'</div>' +
 						'</div>';
 		    	}
 		    	stockMarketDataSymbols.innerHTML = output;

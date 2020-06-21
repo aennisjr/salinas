@@ -191,8 +191,21 @@ form#searchEngineForm {
     width: calc(100% - 40px);
 }
 
+.on-md-sm {
+	display: none;
+}
+
+
 
 @media (max-width:767px) {
+
+	.hidden-md-sm {
+		display: none !important;
+	}
+
+	.on-md-sm {
+		display: inline-block;
+	}
 
 	div.flex-row {
 		display: block;
